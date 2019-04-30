@@ -1,0 +1,8 @@
+#!/bin/bash
+docker run --rm \
+ -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
+ -v $PWD:/app \
+ -v $HOME/.ssh/known_hosts:/root/.ssh/known_hosts \
+ -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+ composer \
+ $@
